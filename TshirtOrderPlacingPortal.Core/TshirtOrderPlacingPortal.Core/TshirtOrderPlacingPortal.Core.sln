@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TshirtOrderPlacingPortal.API", "TshirtOrderPlacingPortal.Core\TshirtOrderPlacingPortal.API.csproj", "{C0879F92-4E2A-49F0-9E3E-7128DFB70C9B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TshirtOrderPlacingPortal.Infrastructure", "TshirtOrderPlacingPortal.Infrastructure\TshirtOrderPlacingPortal.Infrastructure.csproj", "{21BEE2CE-167C-4E5C-8682-B401B0ED708A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TshirtOrderPlacingPortal.Service", "TshirtOrderPlacingPortal.Service\TshirtOrderPlacingPortal.Service.csproj", "{EC57FA2C-C4DA-4F8C-B94D-A8F442B20068}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TshirtOrderPlacingPortal.DTO", "TshirtOrderPlacingPortal.DTO\TshirtOrderPlacingPortal.DTO.csproj", "{2621F804-5348-46B5-8FC2-F11BBCBFBF73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TshirtOrderPlacingPortal.Tests", "TshirtOrderPlacingPortal.Tests\TshirtOrderPlacingPortal.Tests.csproj", "{8B3DCC10-4E4E-40E6-AB6C-D35094AE2C8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0879F92-4E2A-49F0-9E3E-7128DFB70C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0879F92-4E2A-49F0-9E3E-7128DFB70C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0879F92-4E2A-49F0-9E3E-7128DFB70C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0879F92-4E2A-49F0-9E3E-7128DFB70C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21BEE2CE-167C-4E5C-8682-B401B0ED708A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21BEE2CE-167C-4E5C-8682-B401B0ED708A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21BEE2CE-167C-4E5C-8682-B401B0ED708A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21BEE2CE-167C-4E5C-8682-B401B0ED708A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC57FA2C-C4DA-4F8C-B94D-A8F442B20068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC57FA2C-C4DA-4F8C-B94D-A8F442B20068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC57FA2C-C4DA-4F8C-B94D-A8F442B20068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC57FA2C-C4DA-4F8C-B94D-A8F442B20068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2621F804-5348-46B5-8FC2-F11BBCBFBF73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2621F804-5348-46B5-8FC2-F11BBCBFBF73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2621F804-5348-46B5-8FC2-F11BBCBFBF73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2621F804-5348-46B5-8FC2-F11BBCBFBF73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B3DCC10-4E4E-40E6-AB6C-D35094AE2C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3DCC10-4E4E-40E6-AB6C-D35094AE2C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3DCC10-4E4E-40E6-AB6C-D35094AE2C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3DCC10-4E4E-40E6-AB6C-D35094AE2C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EE0332F-152F-46D5-A86B-D3EB328F6D18}
+	EndGlobalSection
+EndGlobal
