@@ -1,0 +1,16 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# bin obj
+TshirtOrderPlacingPortal.API/bin
+TshirtOrderPlacingPortal.DTO/bin
+TshirtOrderPlacingPortal.Infrastructure/bin
+TshirtOrderPlacingPortal.Service/bin
+TshirtOrderPlacingPortal.Tests/bin
+
+TshirtOrderPlacingPortal.API/obj
+TshirtOrderPlacingPortal.DTO/obj
+TshirtOrderPlacingPortal.Infrastructure/obj
+TshirtOrderPlacingPortal.Service/obj
+TshirtOrderPlacingPortal.Tests/obj
+
+/.vs
