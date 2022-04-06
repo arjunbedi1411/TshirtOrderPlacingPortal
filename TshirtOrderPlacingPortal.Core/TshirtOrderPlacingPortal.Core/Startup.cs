@@ -32,12 +32,22 @@ namespace TshirtOrderPlacingPortal.Core
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
+
             services.AddDbContext<DBContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("WebApiDatabase"));
             });
-
-          //  services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -45,7 +55,11 @@ namespace TshirtOrderPlacingPortal.Core
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TshirtOrderPlacingPortal.Core", Version = "v1" });
             });
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<ITshirt, TshirtService>();
+            services.AddTransient<IStyle, StyleService>();
+            services.AddTransient<ISize, SizeService>();
+            services.AddTransient<IFile, FileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +71,14 @@ namespace TshirtOrderPlacingPortal.Core
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TshirtOrderPlacingPortal.Core v1"));
             }
-
+            app.UseCors();
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
             app.UseHttpsRedirection();
 
             app.UseRouting();

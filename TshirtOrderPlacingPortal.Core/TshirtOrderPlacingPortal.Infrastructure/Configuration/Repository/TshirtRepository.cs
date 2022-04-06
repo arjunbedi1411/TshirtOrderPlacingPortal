@@ -35,8 +35,8 @@ namespace TshirtOrderPlacingPortal.Infrastructure.Configuration.Repository
         {
             try
             {
-                var existingUser = await dbSet.Where(x => x.Id == entity.Id)
-                                                    .FirstOrDefaultAsync();
+                var existingUser =  dbSet.Where(x => x.Id == entity.Id)
+                                                    .FirstOrDefault();
 
                 if (existingUser == null)
                     return await Add(entity);
@@ -48,6 +48,9 @@ namespace TshirtOrderPlacingPortal.Infrastructure.Configuration.Repository
                 existingUser.Cost = entity.Cost;
                 existingUser.Description = entity.Description;
                 existingUser.Colour = entity.Colour;
+                existingUser.Availablity = entity.Availablity;
+                existingUser.ProdutionAdditionDate = entity.ProdutionAdditionDate;
+                existingUser.ProductUpdateDate = DateTime.UtcNow;
 
                 return true;
             }
@@ -58,17 +61,17 @@ namespace TshirtOrderPlacingPortal.Infrastructure.Configuration.Repository
             }
         }
 
-        public override async Task<bool> Delete(long id)
+        public override async Task<bool> Delete(int id)
         {
             try
             {
-                var exist = await dbSet.Where(x => x.Id == id)
-                                        .FirstOrDefaultAsync();
+                var exist =  dbSet.Where(x => x.Id == id)
+                                        .FirstOrDefault();
 
                 if (exist == null) return false;
 
                 dbSet.Remove(exist);
-
+             
                 return true;
             }
             catch (Exception ex)

@@ -7,7 +7,8 @@ using TshirtOrderPlacingPortal.DTO.Models;
 
 namespace TshirtOrderPlacingPortal.Infrastructure.Configuration.Contract
 {
-    public interface ITshirt : IGenericRepository<TShirt>
+    public interface IFile : IGenericRepository<Files>
     {
+        Files GetByFileName(string fileName);
     }
 }

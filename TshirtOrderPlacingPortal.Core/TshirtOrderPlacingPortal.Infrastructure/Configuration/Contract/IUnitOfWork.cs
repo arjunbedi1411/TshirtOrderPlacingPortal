@@ -7,7 +7,10 @@ namespace TshirtOrderPlacingPortal.Infrastructure.Configuration.Contract
     public interface IUnitOfWork
     {
         ITshirtRepository Tshirt { get; }
-        Task CompleteAsync();
+        IStyleRepository Style { get; }
+        ISizeRepository Size { get; }
+        IFileRepository Files { get; }
+        Task Complete();
 
         void Dispose();
     }

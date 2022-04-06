@@ -10,7 +10,9 @@ namespace TshirtOrderPlacingPortal.Infrastructure.Data
         }
 
         public virtual DbSet<TShirt> Tshirt { get; set; }
-
+        public virtual DbSet<Style> Style { get; set; }
+        public virtual DbSet<Size> Size { get; set; }
+        public virtual DbSet<Files> Files { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

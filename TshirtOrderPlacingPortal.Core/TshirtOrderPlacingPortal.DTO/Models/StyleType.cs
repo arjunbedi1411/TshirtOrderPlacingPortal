@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TshirtOrderPlacingPortal.DTO.Models
 {
-   public class Size
+   public class Style
     {
         public int Id { get; set; }
-        public string Size_Type{ get; set; }
+        public string Style_Name { get; set; }
     }
 }

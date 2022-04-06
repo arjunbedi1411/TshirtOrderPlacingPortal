@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using TshirtOrderPlacingPortal.DTO.Models;
@@ -11,61 +12,105 @@ namespace TshirtOrderPlacingPortal.Core.Controllers
     [Route("[controller]")]
     public class TshirtController : ControllerBase
     {
-        
-        private readonly IUnitOfWork _unitOfWork;
-
-        public TshirtController(IUnitOfWork unitOfWork)
+        private readonly ITshirt _tshirtRepository;
+        public TshirtController(ITshirt tshirt)
         {
-            _unitOfWork = unitOfWork;
+            _tshirtRepository = tshirt;
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var users = await _unitOfWork.Tshirt.All();
-            return Ok(users);
+            try
+            {
+                var result = await _tshirtRepository.All();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
+
+
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTshirt(long id)
+        public async Task<IActionResult> GetTshirt(int id)
         {
-            var item = await _unitOfWork.Tshirt.GetById(id);
+            try
+            {
+                var item = await _tshirtRepository.GetById(id);
 
-            if (item == null)
-                return NotFound();
+                if (item == null)
+                    return NotFound();
 
-            return Ok(item);
+                return Ok(item);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
+
+
 
         [HttpPost]
         public async Task<IActionResult> CreateTshirt(TShirt tshirt)
         {
-            if (ModelState.IsValid)
+            try
             {
-               tshirt.Id =0;
+                if (ModelState.IsValid)
+                {
+                    tshirt.Id = 0;
+                    await _tshirtRepository.Add(tshirt);
+                    return CreatedAtAction("GetTshirt", new { tshirt.Id }, tshirt);
+                }
 
-                await _unitOfWork.Tshirt.Add(tshirt);
-                await _unitOfWork.CompleteAsync();
-
-              //  return CreatedAtAction("GetTshirt", new { tshirt.Id }, tshirt);
-                return CreatedAtAction("GetTshirt", new { tshirt.Id }, tshirt);
+                return new JsonResult("Somethign Went wrong") { StatusCode = 500 };
             }
-
-            return new JsonResult("Somethign Went wrong") { StatusCode = 500 };
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
+
+
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTshirt(long id)
+        public async Task<IActionResult> DeleteTshirt(int id)
         {
-            var item = await _unitOfWork.Tshirt.GetById(id);
+            try
+            {
+                var result = await _tshirtRepository.Delete(id);
 
-            if (item == null)
-                return BadRequest();
+                if (result == false)
+                    return BadRequest();
 
-            await _unitOfWork.Tshirt.Delete(id);
-            await _unitOfWork.CompleteAsync();
+                return Ok(id);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
 
-            return Ok(item);
+        [HttpPut()]
+        public async Task<IActionResult> UpdateTshirt(TShirt tshirt)
+        {
+            try
+            {
+                var result = await _tshirtRepository.Upsert(tshirt);
+
+                if (result == false)
+                    return BadRequest();
+
+                return CreatedAtAction("GetTshirt", new { tshirt.Id }, tshirt);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }

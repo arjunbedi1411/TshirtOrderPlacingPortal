@@ -7,7 +7,7 @@ using TshirtOrderPlacingPortal.DTO.Models;
 
 namespace TshirtOrderPlacingPortal.Infrastructure.Configuration.Contract
 {
-    public interface ITshirt : IGenericRepository<TShirt>
+    public interface IStyle : IGenericRepository<Style>
     {
     }
 }

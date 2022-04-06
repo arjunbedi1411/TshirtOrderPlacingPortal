@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace TshirtOrderPlacingPortal.DTO.Models
 {
-   public class Size
+    public class FileModel
     {
-        public int Id { get; set; }
-        public string Size_Type{ get; set; }
+        public string FileName { get; set; }
+        public IFormFile FormFile { get; set; }
+       
     }
 }
